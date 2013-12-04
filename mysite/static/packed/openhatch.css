@@ -368,7 +368,7 @@ body#search #results ul { margin: 0; padding: 0; float: left; width: 99%; }
             body#search #results li.expanded .below_the_fold { margin-top: 1.5em; font-size: .75em; display: block; }
 
                 body#search #results li.expanded .meta-data { float: left; width: 100%; }
-                body#search #results li.expanded .description-container p { font-family: "Open Sans"; color: #000; white-space: pre-wrap; word-wrap: break-word; float: left; width: 100%; margin-bottom: .3em; }
+                body#search #results li.expanded .description-container p { font-family:"Open Sans"; color: #000; white-space: pre-wrap; word-wrap: break-word; float: left; width: 100%; margin-bottom: .3em; }
                 body#search #results li.expanded .description-container br { display: inherit; }
                 body#search #results li.expanded .description-container .description { width: 100%; margin-top: 1em; float: left; padding-bottom: 1em; border-bottom: 1px dashed #dedede; max-height: 400px; overflow-y: auto; }
             body#search #results li.expanded .second-line { border-radius: 0; -webkit-border-radius: 0; -moz-border-radius: 0; overflow: visible; }
@@ -525,11 +525,11 @@ div#nav-container div#nav h1 {
 
 body#project #wannahelp { width: 101% ! important; padding: 0; background: transparent; }
 body#project #wanna_help_thanks_tipsy_closer {float: right;}
-body#project #wannahelp-button { -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; padding: 10px 20px; color: #444; float: right; border: 3px solid #fff; white-space: normal; font-family: "Open Sans"; width: 100%; font-weight: normal; cursor: pointer; cursor: hand; text-align: center; text-shadow: 0px 1px 0px #fff; background-color: #c8e29d; background-repeat: repeat-x; background-position: top; font-size: 13pt; }
+body#project #wannahelp-button { -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; padding: 10px 20px; color: #444; float: right; border: 3px solid #fff; white-space: normal; font-family:"Open Sans"; width: 100%; font-weight: normal; cursor: pointer; cursor: hand; text-align: center; text-shadow: 0px 1px 0px #fff; background-color: #c8e29d; background-repeat: repeat-x; background-position: top; font-size: 13pt; }
 body#project #wannahelp-button:active { background-position: bottom;}
 body#project #wannahelp-button:hover, body#project #wannahelp-button:focus { text-decoration: none; color: #222; }
 
-body#project #message_for_helpers input[type='image'] { font-size: 0.85em; font-family: "Open Sans"; float: right; border: 0; color: #555; padding: 5px; position: relative; left: 15px; top: -5px; font-weight: bold; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; }
+body#project #message_for_helpers input[type='image'] { font-size: 0.85em; font-family:"Open Sans"; float: right; border: 0; color: #555; padding: 5px; position: relative; left: 15px; top: -5px; font-weight: bold; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; }
 body#project #message_for_helpers input[type='image']:hover { background-color: #d3d3d3; }
 body#project #next_steps { display: block; text-align: right; margin-top: 1em; }
 
@@ -1471,6 +1471,7 @@ body#people-map .profile-link{ border-radius:8px; -webkit-border-radius:8px; -mo
 #big-people-list ul,#big-people-list .people-list-map{float:left; }
 .people-list a:hover {text-decoration: none; }
 .people-list li > a{float: left; width: 100%; border-radius:8px; -webkit-border-radius:8px; -moz-border-radius:8px; margin-bottom:3px; width:94%; padding:8px; }
+body#people-map .filter-inputs {float:left; padding-right:15px; }
 
 /* Special functionality for people map. */
 body#people-map .people-list li { float: left; width: 100%; border-radius:8px; -webkit-border-radius:8px; -moz-border-radius:8px; margin-bottom:3px; width:94%; padding:8px; }
@@ -1705,8 +1706,8 @@ body#people-map #thinking { display: none; margin-right: 1em; padding: 0 2px; ba
 
 /* Component containers
 ----------------------------------*/
-.ui-widget { font-family: "Open Sans"; font-size: 1.1em; }
-.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: "Open Sans"; font-size: 1em; }
+.ui-widget { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1.1em; }
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button { font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size: 1em; }
 .ui-widget-content { border: 1px solid #dddddd; background: #eeeeee url(images/ui-bg_highlight-soft_100_eeeeee_1x100.png) 50% top repeat-x; color: #333333; }
 .ui-widget-content a { color: #333333; }
 .ui-widget-header { border: 1px solid #e78f08; background: #f6a828 url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x; color: #ffffff; font-weight: bold; }

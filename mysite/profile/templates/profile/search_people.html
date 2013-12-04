@@ -64,28 +64,40 @@ function hideExport() {
                 <button id="collapseAllButton">Collapse All</button>
                 <button id="resetButton">Reset Filter</button>
             </div>
-            <div class="input">
-                <div>
-                    <label for="filter_name">Name:</label>
+            <div class="filter-inputs">
+                <div class="input">
+                    <div>
+                        <label for="filter_name">Name:</label>
+                    </div>
+                    <div>
+                        <input id="filter_name" name="filter_name" type="text" />
+                    </div>
                 </div>
-                <div>
-                    <input id="filter_name" name="filter_name" type="text" />
+                <div class="input">
+                    <div>
+                        <label for="filter_company_name">Company Name:</label>
+                    </div>
+                    <div>
+                        <input id="filter_company_name" name="filter_company_name" type="text" />
+                    </div>
                 </div>
             </div>
-            <div class="input">
-                <div>
-                    <label for="filter_company_name">Company Name:</label>
+            <div class="filter-inputs">
+                <div class="input">
+                    <div>
+                        <label for="filter_email">Email:</label>
+                    </div>
+                    <div>
+                        <input id="filter_email" name="filter_email" type="text" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,6})+$" />
+                    </div>
                 </div>
-                <div>
-                    <input id="filter_company_name" name="filter_company_name" type="text" />
-                </div>
-            </div>
-            <div class="input">
-                <div>
-                    <label for="filter_email">Email:</label>
-                </div>
-                <div>
-                    <input id="filter_email" name="filter_email" type="text" pattern="^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+(\.[a-zA-Z]{2,6})+$" />
+                <div class="input">
+                    <div>
+                        <label for="filter_location">Location:</label>
+                    </div>
+                    <div>
+                        <input id="filter_location" name="filter_location" type="text" />
+                    </div>
                 </div>
             </div>
             <div class="clear">
@@ -171,7 +183,6 @@ function hideExport() {
                     </li>
                     {% endfor %}
                 </ul>
-            </div>
         </fieldset>
     </div>
 
@@ -207,6 +218,7 @@ function hideExport() {
                     filter_name: $('#filter_name').val(),
                     filter_company_name: $('#filter_company_name').val(),
                     filter_email: $('#filter_email').val(),
+                    filter_location: $('#filter_location').val(),
                     skills: getCheckboxValues('skills'),
                     organizations: getCheckboxValues('organizations'),
                     causes: getCheckboxValues('causes'),
