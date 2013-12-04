@@ -38,6 +38,20 @@ Volunteers
     where {{ property }} = {{ value }}
     {% endif %}
 
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="/static/js/jquery-ui-1.9.2.custom.min.js"></script>
+<script src="/static/js/date.js"></script>
+<script src="/static/js/daterangepicker.jQuery.compressed.js"></script>
+<script>
+function hideExport() {
+    $("#export-link").css("display", "inline");
+    $("#export-container").css("display", "none");
+    $("#export-format").css("display", "none");
+    $("#results input[type=checkbox]").toggleClass("displayed");
+};
+</script>
+
 <form id="search-form" action="." method="POST">
 
     {% if user|has_permission:'can_filter_people' %}
@@ -208,6 +222,7 @@ Volunteers
 
             $('#filter_submit').click(function(e) {
                 e.preventDefault();
+                hideExport();
 
                 post_data = getPostData();
 
@@ -227,6 +242,7 @@ Volunteers
             });
 
             $('#order, #view,#inorder').change(function() {
+                hideExport();
                 post_data = getPostData()
 
                 var img = $(document.createElement('img')).attr('src', '/static/images/loading.gif');
@@ -396,6 +412,7 @@ Volunteers
 
         <script>
             $('#view').on('change', function() {
+                hideExport();
                 $.post("save_view", {'view': this.value})
             });
         </script>
@@ -418,24 +435,80 @@ Volunteers
         <p><a id="export-link" href="">Export</a></p>
         <select style="display: none;" id="export-format">
             {% for key, value in export_formats.items %}
-            <option value="{{key}}">{{value}}</option>
+            <option value="{{key}}" {% if key == 'csv' %}selected="selected"{% endif %}>{{value}}</option>
             {% endfor %}
         </select>
-        <p><a id="export-selected" href="" style="display: none;">Export to selected format</a></p>
+        <div id="export-container" style="display: none">
+            <a id="export-all" href="#">Export all</a>
+            <a id="export-selected" href="#">Export selected</a>
+            <div>
+                <a id="export-in-range">Export in date range</a>
+                <input id="export-date-range" type="text"/>
+            </div>
+        </div>
         <script>
             $("#export-link").click(function(e) {
                 e.preventDefault();
                 $(this).css("display", "none");
                 $("#export-format").css("display", "inline");
-                $("#export-selected").css("display", "block");
+                $("#export-container").css("display", "block");
+                $("#export-container a").css("display", "block");
+                $("#export-date-range").daterangepicker({ constrainDates: true });
+                $("#results input[type=checkbox]").toggleClass("displayed");
             });
-            $("#export-selected").click(function(e) {
+            $("#export-all").click(function(e) {
                 $("#search-form")
                     .attr("target", "_blank")
                     .attr("action", "/people-export/?format=" + $("#export-format").val())
                     .submit()
                     .removeAttr("target")
                     .attr("action", ".");
+                e.preventDefault();
+            });
+            $("#export-selected").click(function(e) {
+                e.preventDefault();
+
+                var selected_people = [];
+                $('#results input[type=checkbox]').each(function(index, element) {
+                    if ($(element).prop('checked') === true) {
+                        selected_people.push($(element).parents('li').eq(0).attr('data-person-id'));
+                    }
+                });
+
+                var input = $(document.createElement("input"))
+                    .attr("id", "export-selected-people")
+                    .attr("type", "hidden")
+                    .attr("name", "selected_people")
+                    .attr("value", selected_people);
+                $("#search-form")
+                    .append(input)
+                    .attr("target", "_blank")
+                    .attr("action", "/people-export/?format=" + $("#export-format").val())
+                    .submit()
+                    .removeAttr("target")
+                    .attr("action", ".");
+                $("#export-selected-people").remove();
+                e.preventDefault();
+            });
+            $("#export-in-range").click(function(e) {
+                var date_range = $("#export-date-range").val();
+                if (date_range.length <= 0) {
+                    return false;
+                }
+
+                var input = $(document.createElement("input"))
+                    .attr("id", "export-date-range-val")
+                    .attr("type", "hidden")
+                    .attr("name", "date_range")
+                    .attr("value", date_range);
+                $("#search-form")
+                    .append(input)
+                    .attr("target", "_blank")
+                    .attr("action", "/people-export/?format=" + $("#export-format").val())
+                    .submit()
+                    .removeAttr("target")
+                    .attr("action", ".");
+                $("#export-date-range-val").remove();
                 e.preventDefault();
             });
         </script>

@@ -23,6 +23,7 @@
 # Python
 import StringIO
 import datetime
+from dateutil import parser
 import urllib
 import collections
 import logging
@@ -478,6 +479,22 @@ def people_export(request):
         people = Person.objects.all().order_by('user__username')
 
     people = mysite.profile.view_helpers.filter_people(people, request.POST)
+
+    if 'selected_people' in request.POST:
+        selected_people = [int(id) for id in str(request.POST.get('selected_people')).split(',')]
+        people = [person for person in people if person.id in [int(id) for id in selected_people]]
+
+    if 'date_range' in request.POST:
+        date_from = None
+        date_to = None
+        date_range = str(request.POST.get('date_range')).split(' - ')
+        if len(date_range) > 1:
+            date_from = parser.parse(date_range[0])
+            date_to = parser.parse(date_range[1])
+        else:
+            date_from = parser.parse(date_range[0])
+            date_to = date_from
+        people = [person for person in people if person.date_added >= date_from and person.date_added <= date_to]
 
     questions_to_export = [field.question.display_name for field in CardDisplayedQuestion.objects.filter(person__user__pk=request.user.id)]
 

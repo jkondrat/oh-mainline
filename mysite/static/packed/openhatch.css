@@ -1161,7 +1161,7 @@ div.input input[type=text] {
 }
 
 .search_card_profile fieldset legend a.legend {
-    width: 100%;
+    width: 90%;
     padding: 15px 0px 15px 0px;
     display: inline-block;
 }
@@ -1286,6 +1286,38 @@ div#portfolio {
     padding-right: 5px;
     float: right;
     clear: both;
+}
+
+.search_card_profile input[type=checkbox] {
+    position: absolute !important;
+    left: 0px !important;
+    top: 18px !important;
+    display: none;
+}
+
+.search_list input[type=checkbox] {
+    display: none;
+}
+
+.search_card_profile input[type=checkbox].displayed, .search_list input[type=checkbox].displayed {
+    display: inline-block !important;
+}
+
+#export-container input {
+    float: none !important;
+}
+
+#export-container a, #export-container input {
+    padding: 5px;
+}
+
+#export-container div {
+    margin-bottom: 25px;
+}
+
+#export-container div a {
+    display: inline-block !important;
+    float: left !important;
 }
 
 body#profile .project-display { float: left; margin-right: 0; width: 705px; }

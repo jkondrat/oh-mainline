@@ -4,9 +4,10 @@
 <div id="results">
     {% for person in people %}
         {% with person|get_card_fields:request.user.id as card %}
-            <li class="search_card_profile">
+            <li class="search_card_profile" data-person-id="{{ person.id }}">
                 <fieldset>
                     <legend>
+                        <input type="checkbox" name="selected_people" />
                         <a class="legend" href="/people/{{ person.user.id }}">{{ person.user.first_name }} {{ person.user.last_name }}</a>
                         <div class="links">
                         {% for link in card.icons %}
