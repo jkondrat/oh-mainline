@@ -17,6 +17,7 @@
                     {% for key, value in entry.fields.items %}
                         <strong>&nbsp&nbsp {{ key }}:</strong> {{ value }}
                     {% endfor %}
+                    <p><strong>Location:</strong> {{ person.location_display_name }}</p>
                     <p class="date">Date added: {{ person.date_added }}</p>
                 </fieldset>
             </li>

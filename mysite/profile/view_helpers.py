@@ -197,7 +197,7 @@ def __does_person_meet_criteria__(person, post_data):
             return False
     if 'filter_location' in post_data and len(post_data.get('filter_location')) > 0:
         location = post_data.get('filter_location', '')
-        if location not in person.location_display_name:
+        if location.lower() not in person.location_display_name.lower():
             return False
     if 'skills[]' in post_data:
         skills = post_data.getlist('skills[]')

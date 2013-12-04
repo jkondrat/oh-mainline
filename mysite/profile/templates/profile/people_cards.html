@@ -30,6 +30,7 @@
                     {% for key, value in card.fields.items %}
                         <p><strong>{{ key }}:</strong> {{ value }}</p>
                     {% endfor %}
+                    <p><strong>Location:</strong> {{ person.location_display_name }}</p>
                 </fieldset>
                 <div class="footer">
                     <p class="date">Date added: {{ person.date_added }}</p>
